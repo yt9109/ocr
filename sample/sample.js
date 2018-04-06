@@ -22,12 +22,12 @@ var imgBase =  config.get('tencentyoutuyun.imgBase');
 //    console.log("idcardocr:" + JSON.stringify(data));
 //});
 //使用本地图片也可
-var imgUrl = '1497688456193.jpg';
+var imgUrl = imgBase+'upload_0a8b887426491e2d6a3f2ea5cfd0cf20.jpg';
 // //'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512385991343&di=16c8bb3867a62bf8cfc61f1c2fbafd89&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F75%2F96%2F01T58PICxAk.jpg';
 // youtu.generalocr(imgUrl, function(data){
 //    console.log("generalocr:" + JSON.stringify(data));
 // });
-
+console.log(imgUrl);
 youtu.imagetag(imgUrl, function(data){
    console.log("imagetag:" + JSON.stringify(data));
 });
@@ -469,8 +469,9 @@ app.get('/ocr_upload2', function (req, res) {
    console.log('get'); 
    console.log(req.query.name); 
    var img_name = req.query.name;
-   // var imgUrl = 'http://139.199.166.223/'+img_name;
-    var imgUrl = 'http://139.199.166.223/upload_90682dcaea36c56bd585e4651f164909.jpg';
+   //http or localpath
+    var imgUrl = imgBase+ img_name;
+    console.log(imgUrl);
    	youtu.imagetag(imgUrl, function(data3){
    		try{
    			console.log(data3);
@@ -590,7 +591,7 @@ app.get('/ocr_upload2', function (req, res) {
 
  
 
-	var server = app.listen(80, function () {
+	var server = app.listen(8080, function () {
 
 	  var host = server.address().address
 	  var port = server.address().port
