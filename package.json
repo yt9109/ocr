@@ -27,6 +27,7 @@
     "aws-sdk": "^2.162.0",
     "baidu-aip-sdk": "^1.5.1",
     "body-parser": "^1.18.2",
+    "config": "^1.30.0",
     "express": "^4.16.2",
     "formidable": "^1.1.1",
     "iconv-lite": "^0.4.13",

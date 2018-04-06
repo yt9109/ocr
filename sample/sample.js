@@ -1,15 +1,19 @@
 var tencentyoutuyun = require('..');
 var conf  = tencentyoutuyun.conf;
 var youtu = tencentyoutuyun.youtu;
+var config = require('config');
+
 
 // 设置开发者和应用信息, 请填写你在开放平台
-var appid = '';
-var secretId = '';
-var secretKey = '';
-var userid = '';
+var appid = config.get('tencentyoutuyun.appid');
+// console.log(appid);
+var secretId = config.get('tencentyoutuyun.secretId');
+var secretKey = config.get('tencentyoutuyun.secretKey');
+var userid = config.get('tencentyoutuyun.userid');
 conf.setAppInfo(appid, secretId, secretKey, userid, 0)
 
-
+var imgBase =  config.get('tencentyoutuyun.imgBase');
+// console.log(imgBase);
 //youtu.imageporn('a1.jpg', function(data){
 //    console.log("imagetag:" + JSON.stringify(data));
 //});
@@ -17,15 +21,16 @@ conf.setAppInfo(appid, secretId, secretKey, userid, 0)
 //youtu.idcardocr('a.jpg', 0, function(data){
 //    console.log("idcardocr:" + JSON.stringify(data));
 //});
-// var imgUrl = 'http://ytlala.cc/upload_3800916def5aa26cd1ca43019740e134.jpg';
+//使用本地图片也可
+var imgUrl = '1497688456193.jpg';
 // //'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512385991343&di=16c8bb3867a62bf8cfc61f1c2fbafd89&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F75%2F96%2F01T58PICxAk.jpg';
 // youtu.generalocr(imgUrl, function(data){
 //    console.log("generalocr:" + JSON.stringify(data));
 // });
 
-// youtu.imagetag(imgUrl, function(data){
-//    console.log("imagetag:" + JSON.stringify(data));
-// });
+youtu.imagetag(imgUrl, function(data){
+   console.log("imagetag:" + JSON.stringify(data));
+});
 
 // 其他接口 类似
 var AWS = require('aws-sdk');
